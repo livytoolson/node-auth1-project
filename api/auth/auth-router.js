@@ -19,7 +19,7 @@ router.post('/login', checkPayload, checkUsernameExists, async (req, res) => {
         const verifies = bcrypt.compareSync(req.body.password, req.userData.password)
         if (verifies) {
             req.session.user = req.userData
-            res.json(`Welcome back, ${req.userData.username}`)
+            res.json(`Welcome back, ${req.userData.username}. You are now logged in.`)
         } else {
             res.status(401).json('You shall not pass!')
         }
